@@ -1,4 +1,4 @@
--- BLACKLISTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+-- BLACKLISTTTT
 
 local function banPlayer(player)
     player:Kick("TWR Has banned you from this script, you can buy an unban on our Discord server. discord.gg/R57rsmdAzk")
@@ -61,15 +61,6 @@ local Lock = Window:MakeTab({
 -- Lock Section
 local LockSec = Lock:AddSection({
     Name = "Lock"
-})
-
---Aimlock E
-
-LockSec:AddButton({
-	Name = "Aimlock (FIX SOON)",
-	Callback = function()
-      		print("fix soon")
-  	end    
 })
 
 -- Camlock X
@@ -265,6 +256,13 @@ LockSec:AddButton({
 				end
 				end
 			end
+  	end    
+})
+
+LockSec:AddButton({
+	Name = "Mouse Lock (might be streamable if used right)",
+	Callback = function()
+      		
   	end    
 })
 
@@ -3699,6 +3697,9 @@ local function handleCommand(player, message)
                     game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
                 elseif message == string.lower(prefix.."unfreeze .") then 
                     game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+                elseif message == string.lower(prefix.."dropcash .") then 
+                    local args = {"DropMoney", "10000"}
+                        game:GetService("ReplicatedStorage").MainEvent:FireServer(unpack(args))
                 elseif message:sub(1, #prefix+3) == string.lower(prefix.."say") then 
                     local messageToSend = message:sub(#prefix+5)
                     game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):WaitForChild("SayMessageRequest"):FireServer(messageToSend, "All")
@@ -3766,6 +3767,7 @@ game.ReplicatedStorage:WaitForChild("DefaultChatSystemChatEvents", math.huge):Wa
         handleCommand(player, message)
     end
 end)
+
 
 -- NAME TAGS
 
